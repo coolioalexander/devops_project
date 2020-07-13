@@ -18,6 +18,11 @@
         image: "{{ image }}"
         name: "devops_app"
         state: present
+        detach: yes
+        recreate: yes
+        restart: yes
+        exposed_ports:
+          - 5000
             
     - name: Check if container is running
       shell: docker ps
