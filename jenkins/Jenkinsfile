@@ -60,13 +60,10 @@ pipeline {
                     def image = docker.build registry + ":v$BUILD_NUMBER"  
 
                     // Use the Credential ID of the Docker Hub Credentials we added to Jenkins.
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
+                    docker.withRegistry('', registryCredential ) {
 
                         // Push image and tag it with our build number for versioning purposes.
                         image.push()
-
-                        // Push the same image and tag it as the latest version (appears at the top of our version list).
-                        image.push('latest')
                     }
                 }
             }
