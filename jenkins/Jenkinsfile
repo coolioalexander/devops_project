@@ -57,7 +57,7 @@ pipeline {
             steps{
                 script {
 
-                    def image = docker.build registry + ":$BUILD_NUMBER"  
+                    def image = docker.build registry + ":v$BUILD_NUMBER"  
 
                     // Use the Credential ID of the Docker Hub Credentials we added to Jenkins.
                     docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
