@@ -16,7 +16,7 @@
     - name: Running the container
       docker_container:
         image: "{{ image }}"
-        name: "{{ image }}"
+        name: "devops_app"
         state: present
             
     - name: Check if container is running
