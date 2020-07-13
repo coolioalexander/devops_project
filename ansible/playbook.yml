@@ -13,6 +13,11 @@
         name: "{{ image }}"
         source: pull
 
+    - name: Stop the old container
+      docker_container:
+        name: devops_app
+        state: stopped
+
     - name: Running the container
       docker_container:
         image: "{{ image }}"

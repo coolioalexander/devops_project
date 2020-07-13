@@ -81,7 +81,7 @@ pipeline {
                         inventory: '${WORKSPACE}/ansible/hosts.yml',
                         playbook: '${WORKSPACE}/ansible/playbook.yml',
                         extraVars: [
-                            image: image,
+                            image: image
                         ],
                         disableHostKeyChecking: true,
                     )
