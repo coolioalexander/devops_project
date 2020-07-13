@@ -4,6 +4,10 @@
   remote_user: vagrant
   become: yes
   tasks:
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+        
     - name: Pull default Docker image
       docker_image:
         name: "{{ image }}"
