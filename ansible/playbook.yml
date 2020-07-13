@@ -17,7 +17,7 @@
       docker_container:
         image: "{{ image }}"
         name: "{{ image }}"
-        state: running
+        state: present
             
     - name: Check if container is running
       shell: docker ps
