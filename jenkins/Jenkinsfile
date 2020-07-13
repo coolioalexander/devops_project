@@ -64,7 +64,26 @@ pipeline {
 
                         // Push image and tag it with our build number for versioning purposes.
                         image.push()
+
+                        image.push('latest')
                     }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+
+                    def image = registry + ":v$BUILD_NUMBER"
+
+                    ansiblePlaybook(
+                        inventory: '${WORKSPACE}/ansible/hosts.yml',
+                        playbook: '${WORKSPACE}/ansible/playbook.yml',
+                        extraVars: [
+                            image: ${image},
+                        ]
+                    )
                 }
             }
         }
