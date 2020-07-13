@@ -17,12 +17,7 @@
       docker_container:
         image: "{{ image }}"
         name: "devops_app"
-        state: present
-        detach: yes
-        recreate: yes
-        restart: yes
+        state: started
+        network_mode: host
         exposed_ports:
           - 5000
-            
-    - name: Check if container is running
-      shell: docker ps
