@@ -1,8 +1,10 @@
 ---
 - name: Deploy the application to server
   hosts: server
+  gather_facts: no
   remote_user: vagrant
   become: yes
+  sudo: yes
   tasks:
     - name: Pull default Docker image
       docker_image:
