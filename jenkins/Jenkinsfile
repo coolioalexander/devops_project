@@ -6,7 +6,7 @@ pipeline {
     agent any    
 
     environment {
-        registry = "alexandercoolio/devops_project"
+        registry = "alexandercoolio/devops_app"
         GOCACHE = "/tmp"
     }
 
@@ -19,10 +19,10 @@ pipeline {
             steps {                                           
                 // Create our project directory.
                 sh 'cd ${GOPATH}/src'
-                sh 'mkdir -p ${GOPATH}/src/devops_project'
+                sh 'mkdir -p ${GOPATH}/src/app'
 
                 // Copy all files in our Jenkins workspace to our project directory.                
-                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/devops_project'
+                sh 'cp -r ${WORKSPACE}/*.go ${GOPATH}/src/app'
 
                 // Build the app.
                 sh 'go build'               
@@ -36,10 +36,10 @@ pipeline {
             steps {                 
                 // Create our project directory.
                 sh 'cd ${GOPATH}/src'
-                sh 'mkdir -p ${GOPATH}/src/devops_project'
+                sh 'mkdir -p ${GOPATH}/src/app'
 
                 // Copy all files in our Jenkins workspace to our project directory.
-                sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/devops_project'
+                sh 'cp -r ${WORKSPACE}/*.go ${GOPATH}/src/app'
 
                 // Remove cached test results.
                 sh 'go clean -cache'
