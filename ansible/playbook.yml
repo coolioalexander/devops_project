@@ -9,19 +9,19 @@
         name: docker
     
     - name: Stop the old container
-        docker_container:
-          name: devops_app
-          state: stopped
+      docker_container:
+        name: devops_app
+        state: stopped
 
     - name: Prune everything (including non-dangling images)
-        docker_prune:
-          containers: yes
-          images: yes
-          images_filters:
-            dangling: false
-          networks: yes
-          volumes: yes
-          builder_cache: yes
+      docker_prune:
+        containers: yes
+        images: yes
+        images_filters:
+          dangling: false
+        networks: yes
+        volumes: yes
+        builder_cache: yes
         
     - name: Pull default Docker image
       docker_image:
