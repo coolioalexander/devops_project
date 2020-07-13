@@ -82,7 +82,8 @@ pipeline {
                         playbook: '${WORKSPACE}/ansible/playbook.yml',
                         extraVars: [
                             image: image,
-                        ]
+                        ],
+                        disableHostKeyChecking: true,
                     )
                 }
             }
