@@ -13,7 +13,7 @@
         name: devops_app
         state: stopped
 
-    - name: Prune everything (including non-dangling images)
+    - name: Prune everything # (including non-dangling images)
       docker_prune:
         containers: yes
     #    images: yes
