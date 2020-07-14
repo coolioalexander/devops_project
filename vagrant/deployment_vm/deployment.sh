@@ -60,6 +60,7 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io > /dev/null 2>&1
 sudo groupadd docker
 sudo usermod -aG docker jenkins
 sudo usermod -aG docker vagrant
+chmod root:docker /var/run/docker.sock
 
 echo "Installing docker module for python3 and python2"
 pip3 install docker

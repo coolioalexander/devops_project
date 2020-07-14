@@ -101,6 +101,17 @@ pipeline {
             }
         }
 
+        stage('Security Test') {
+            // Use gauntlt/gauntlt.
+            steps {
+                script {
+                    sh '''
+                        docker run -t --rm=true -v $(pwd):/working -w /working gauntlt/gauntlt ${WORKSPACE}/gauntlt/xss.attack
+                        '''
+                }
+            }
+        }    
+
     }
 
     post {
