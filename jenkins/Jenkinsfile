@@ -106,7 +106,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker run -t --rm=true -v $(pwd)/gauntlt:/working -w /working gauntlt/gauntlt ${WORKSPACE}/gauntlt/xss.attack
+                        docker run -t --rm=true -v $(pwd)/gauntlt:/working -w /working gauntlt/gauntlt ./xss.attack
                         '''
                 }
             }
