@@ -1,11 +1,11 @@
 @slow
-Feature: Look for cross site scripting (xss) using arachni against http://172.17.122.39:5000
+Feature: Look for cross site scripting (xss) using arachni against http:// 172.18.44.74:5000
 
 Background:
   Given "arachni" is installed
   And the following profile:
      | name   | server                |
-     | url    | http://172.17.122.39:5000  |
+     | url    | http:// 172.18.44.74:5000  |
 
 Scenario: Do a quick check for cross site scripting and verify no issues are found
   When I launch an "arachni" attack with:
