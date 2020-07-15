@@ -101,16 +101,16 @@ pipeline {
             }
         }
 
-        stage('Security Test') {
-            // Use gauntlt/gauntlt.
-            steps {
-                script {
-                    sh '''
-                        docker run -t --rm=true -v $(pwd)/gauntlt:/working -w /working gauntlt/gauntlt ./xss.attack
-                        '''
-                }
-            }
-        }   
+        //stage('Security Test') {
+        //    // Use gauntlt/gauntlt.
+        //    steps {
+        //        script {
+        //            sh '''
+        //                docker run -t --rm=true -v $(pwd)/gauntlt:/working -w /working gauntlt/gauntlt ./xss.attack
+        //                '''
+        //        }
+        //    }
+        //}   
 
         stage('Clean up') {
             steps {
