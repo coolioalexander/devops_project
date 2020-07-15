@@ -110,19 +110,7 @@ pipeline {
         //                '''
         //        }
         //    }
-        //}   
-
-        stage('Clean up') {
-            steps {
-                script {
-                    sh '''
-                        docker stop $(docker ps -a -q)
-                        docker rm $(docker ps -a -q)
-                        sudo rm -R ${WORKSPACE}/gauntlt
-                        '''
-                }
-            }
-        } 
+        //}    
 
     }
 
