@@ -68,6 +68,8 @@ sudo usermod -aG docker jenkins
 sudo usermod -aG docker vagrant
 chmod root:docker /var/run/docker.sock
 
+# Docker module for python
+
 echo "Installing docker module for python3 and python2"
 pip3 install docker
 pip install docker
@@ -77,6 +79,8 @@ sleep 1m
 echo "Installing Jenkins Plugins"
 JENKINSPWD=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 echo $JENKINSPWD
+
+# Post-provisioning : rebooting
 
 echo "Please remenber to add jenkins & vagrant users to group docker and reboot machine..."
 echo "\
