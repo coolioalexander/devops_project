@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Jenkins
+
 echo "Adding apt-keys"
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
@@ -24,6 +26,8 @@ sudo service jenkins start
 echo "Updating apt-get"
 sudo apt-get -qq update
 
+# Ansible
+
 echo "Installing dependencies"
 sudo apt-get -y install apt-transport-https \
     ca-certificates \
@@ -39,6 +43,8 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 
 echo "Installing ansible"
 sudo apt-get -y install ansible > /dev/null 2>&1
+
+# Docker
 
 echo "Installing docker"
 sudo apt-get remove docker docker-engine docker.io containerd runc
