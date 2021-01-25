@@ -3,7 +3,8 @@
 Mise en place d’un pipeline CI/CD.
 Dans ce projet, nous devons mettre en place un pipeline CI/CD comme suit :
 
-Architecture 
+## Architecture 
+
 Pour ce faire, nous avons choisi de monter notre architecture en local sur la base de deux machines virtuelles :
 -	Un serveur de déploiement (CI/CD)
 -	Un serveur d’application 
@@ -16,10 +17,12 @@ Description du pipeline
 A chaque push de notre projet vers le dépôt GitHub, un webHook est configuré pour démarrer automatiquement un build sur le serveur de déploiement à partir d’un Jenkinsfile.
 Jenkins se charge de récupérer la dernière version du projet, de faire un build et des tests unitaires de l’application dans un conteneur Go. Une fois ces étapes passées, une image docker de notre application est créée à partir d’un Dockerfile. Ensuite, cette image est scannée par le scanner d’images Clair et ensuite envoyée vers un artifactory ; il s’agit d’un dépôt d’images sur DockerHub. Après, Ansible se charge de déployer cette image docker sur notre serveur d’application au moyen d’un playbook. Après cette étape, notre application est accessible sur le serveur. Pour finir, des tests de sécurité (attaque XSS) sont appliqués grâce à Guantlt et Arachni.
 
-Structure du projet
+## Structure du projet
+
 Le provisionnement des serveurs locaux (deployment_vm et app_vm) a été fait à partir de Vagrant. Une fois les deux serveurs démarrés, on aura besoin de leurs adresses IP pour configurer notre pipeline. L’adresse de app_vm (serveur d’application) sera ajoutée dans le fichier hosts de Ansible et dans le fichier xss.attack de Gauntlt. Pour configurer le webHook de GitHub, il nous faut une adresse sur internet et non une adresse locale. L’outil ngrok nous fournit une adresse à partir de l’adresse locale grâce à la commande « ngrok http adresse_ip ». L’adresse de deployment_vm sera ajoutée dans la configuration du webHook. Rappelons également qu’il faut configurer Jenkins une fois démarré sur le port 8080. Il faudra ajouter les credentials de notre compte DockerHub au nom de « my-docker-credential-id » dans le Jenkinsfile et installer les plugins Docker, Golang et Ansible.
 
-Démonstration
+## Démonstration
+
 1-	Obtention d’une adresse sur internet du serveur de déploiement grâce à ngrok.
 2-	Configuration de l’adresse du serveur d’application dans hosts.yml et xss.attack.
 3-	Démarrage du build dans Jenkins après un push du projet sur GitHub.
