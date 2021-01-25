@@ -23,18 +23,18 @@ Le provisionnement des serveurs locaux (deployment_vm et app_vm) a été fait à
 
 ## Démonstration
 
-1-	Obtention d’une adresse sur internet du serveur de déploiement grâce à ngrok.
-2-	Configuration de l’adresse du serveur d’application dans hosts.yml et xss.attack.
-3-	Démarrage du build dans Jenkins après un push du projet sur GitHub.
-4-	Résultats du build de Jenkins
-4.1- SCM 
-4.2- Build
-4.3- Tests
-4.4- Docker Build 
-4.5-Docker Scan : Clair
-4.6- Docker Push
-4.7- Ansible Deploy
-5-	Push de l’image sur DockerHub
-6-	Déploiement de l’application : le message « Hello DevOps » s’affiche une fois le conteneur déployé.
-7-	Test de sécurité : Gauntlt + Arachni
-8-	Résultat du pipeline
+#### Obtention d’une adresse sur internet du serveur de déploiement grâce à ngrok.
+#### Configuration de l’adresse du serveur d’application dans hosts.yml et xss.attack.
+#### Démarrage du build dans Jenkins après un push du projet sur GitHub.
+#### Résultats du build de Jenkins
+#### SCM 
+#### Build
+#### Tests
+#### Docker Build 
+#### Docker Scan : Clair
+#### Docker Push
+#### Ansible Deploy
+#### Push de l’image sur DockerHub
+#### Déploiement de l’application : le message « Hello DevOps » s’affiche une fois le conteneur déployé.
+#### Test de sécurité : Gauntlt + Arachni
+#### Résultat du pipeline
