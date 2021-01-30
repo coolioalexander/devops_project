@@ -13,7 +13,9 @@ La partie développement (Dev) sera intégralement construite en langage Go. Il 
 
 Le serveur de déploiement est composé d’un système de build (Jenkins), d’un outil de déploiement (Ansible) et d’une technologie de conteneurisation (Docker).
 Le serveur d’application est composé de Docker qui nous permettra de démarrer l’application web dans un conteneur.
-Description du pipeline
+
+## Description du pipeline
+
 A chaque push de notre projet vers le dépôt GitHub, un webHook est configuré pour démarrer automatiquement un build sur le serveur de déploiement à partir d’un Jenkinsfile.
 Jenkins se charge de récupérer la dernière version du projet, de faire un build et des tests unitaires de l’application dans un conteneur Go. Une fois ces étapes passées, une image docker de notre application est créée à partir d’un Dockerfile. Ensuite, cette image est scannée par le scanner d’images Clair et ensuite envoyée vers un artifactory ; il s’agit d’un dépôt d’images sur DockerHub. Après, Ansible se charge de déployer cette image docker sur notre serveur d’application au moyen d’un playbook. Après cette étape, notre application est accessible sur le serveur. Pour finir, des tests de sécurité (attaque XSS) sont appliqués grâce à Guantlt et Arachni.
 
